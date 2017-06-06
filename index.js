@@ -1,33 +1,66 @@
 const personForm = document.querySelector('#personForm')
 const talkingForm = document.querySelector('#talkingForm')
 
+function renderColor(color) {
+    const colorDiv = document.createElement('div')
+    colorDiv.style.backgroundColor = color
+    colorDiv.style.width = '100px'
+    colorDiv.style.height = '50px'
+
+    return colorDiv
+}
+
+function renderListItem(fieldName, value) {
+    const li = document.createElement('li')
+    li.innerHTML = `${fieldName}: ${value}`
+    return li
+}
+
+function renderList(personData) {
+    const list = document.createElement('ul')
+    Object.keys(personData).map(function(fieldName) {
+        const li = renderListItem(fieldName, personData[fieldName])
+        list.appendChild(li)
+    })
+    return list
+}
+
+
 function handleSubmit(ev) {
   ev.preventDefault()
   const f = ev.target
   const details = document.querySelector('#details')
-  const name = f.personName.value
-  const favoriteColor = f.favoriteColor.value
-  const age = f.age.value
+//   const name = f.personName.value
+//   const favoriteColor = f.favoriteColor.value
+//   const age = f.age.value
 
-  const colorDiv = `
-    <div style="background-color: ${favoriteColor}; width: 100px; height: 50px;"></div>
-  `
+  const person = {
+      name: f.personName.value,
+      favoriteColor: renderColor(f.favoriteColor.value).outerHTML,
+      age: f.age.value,
+  }
 
-  const nameLi = document.createElement("LI")
-  nameLi.innerHTML = "Name: " + name
-//   nameLi.appendChild(document.createTextNode("Name: " + name));
+  details.appendChild(renderList(person))
 
-  const colorDivLi = document.createElement("LI")
-  colorDivLi.innerHTML = "Favorite Color: " + colorDiv
-//   colorDivLi.appendChild(document.createTextNode("Favorite Color: " + colorDiv));
+//   const colorDiv = `
+//     <div style="background-color: ${favoriteColor}; width: 100px; height: 50px;"></div>
+//   `
 
-  const ageLi = document.createElement("LI")
-  ageLi.innerHTML = "Age: " + age
-//   ageLi.appendChild(document.createTextNode("Age: " + age))
+//   const nameLi = document.createElement("LI")
+//   nameLi.innerHTML = "Name: " + name
+// //   nameLi.appendChild(document.createTextNode("Name: " + name));
 
-  details.appendChild(nameLi)
-  details.appendChild(colorDivLi)
-  details.appendChild(ageLi)
+//   const colorDivLi = document.createElement("LI")
+//   colorDivLi.innerHTML = "Favorite Color: " + colorDiv
+// //   colorDivLi.appendChild(document.createTextNode("Favorite Color: " + colorDiv));
+
+//   const ageLi = document.createElement("LI")
+//   ageLi.innerHTML = "Age: " + age
+// //   ageLi.appendChild(document.createTextNode("Age: " + age))
+
+//   details.appendChild(nameLi)
+//   details.appendChild(colorDivLi)
+//   details.appendChild(ageLi)
   //li = document.createElement("li");
 //   details.innerHTML = `
 //     <ul>
