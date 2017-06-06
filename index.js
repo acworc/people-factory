@@ -2,14 +2,21 @@ const personForm = document.querySelector('#personForm')
 const talkingForm = document.querySelector('#talkingForm')
 
 function handleSubmit(ev) {
-    console.log('yo')
-    ev.preventDefault()
+  ev.preventDefault()
+  const f = ev.target
+  const details = document.querySelector('#details')
+  const name = f.personName.value
+  const pClass = f.personClass.value
+  const combo = name + " " + pClass
+  document.querySelector('h1').textContent = combo
+  
+  // details.innerHTML = `<em>${name}</em>`
 
-    const f = ev.target
-    const name = f.personName.value
-    const pClass = f.personClass.value
-    const combo = name + " " + pClass
-    document.querySelector('h1').textContent = combo
+  const em = document.createElement('em')
+  em.textContent = name
+  details.appendChild(em)
+
+  
 }
 
 
@@ -26,6 +33,7 @@ function handleTalk(ev) {
         document.getElementById("p1").style.fontFamily = 'Comic Sans MS'
     } else {
         document.getElementById("p1").style.fontFamily = 'times'
+        document.getElementById("pi").style.fontSize
     }
 }
 
