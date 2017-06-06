@@ -8,9 +8,38 @@ function handleSubmit(ev) {
   const name = f.personName.value
   const favoriteColor = f.favoriteColor.value
   const age = f.age.value
-//   const pClass = f.personClass.value
-//   const combo = name + " " + pClass
-//   document.querySelector('h1').textContent = combo
+
+  const colorDiv = `
+    <div style="background-color: ${favoriteColor}; width: 100px; height: 50px;"></div>
+  `
+
+  const nameLi = document.createElement("LI")
+  nameLi.innerHTML = "Name: " + name
+//   nameLi.appendChild(document.createTextNode("Name: " + name));
+
+  const colorDivLi = document.createElement("LI")
+  colorDivLi.innerHTML = "Favorite Color: " + colorDiv
+//   colorDivLi.appendChild(document.createTextNode("Favorite Color: " + colorDiv));
+
+  const ageLi = document.createElement("LI")
+  ageLi.innerHTML = "Age: " + age
+//   ageLi.appendChild(document.createTextNode("Age: " + age))
+
+  details.appendChild(nameLi)
+  details.appendChild(colorDivLi)
+  details.appendChild(ageLi)
+  //li = document.createElement("li");
+//   details.innerHTML = `
+//     <ul>
+//       <li>Name: ${name}</li>
+//       <li>Favorite Color: ${colorDiv}</li>
+//       <li>Age: ${age}</li>
+//     </ul>
+//   `
+
+  const pClass = f.personClass.value
+  const combo = name + " " + pClass
+  document.querySelector('h1').textContent = combo
 
 
   
@@ -20,13 +49,6 @@ function handleSubmit(ev) {
 //   em.textContent = name
 //   details.appendChild(em)
 
-details.innerHTML = `
-    <ul>
-        <li>Name: ${name}</li>
-        <li>Favorite Color: ${favoriteColor}</li>
-        <li>Age: ${age}</li>
-    </ul>
-`
 
   
 }
@@ -45,7 +67,6 @@ function handleTalk(ev) {
         document.getElementById("p1").style.fontFamily = 'Comic Sans MS'
     } else {
         document.getElementById("p1").style.fontFamily = 'times'
-        document.getElementById("pi").style.fontSize
     }
 }
 
